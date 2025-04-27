@@ -64,8 +64,12 @@ class _GamePageState extends State<GamePage> {
       _currentElement = randomElement;
 
       final randomChallenge = random.nextInt(3); // 0: 顏色, 1: 內容, 2: 剪刀石頭布
+      
+      final randomRace = random.nextInt(3);
 
-      _textColor = randomElement["color"] as Color;
+      final randomColor = elements[random.nextInt(4)]["color"] as Color;
+      _textColor = randomColor;
+
       final isColorQuestion = randomChallenge == 0;
       final isContentQuestion = randomChallenge == 1;
 
@@ -83,10 +87,10 @@ class _GamePageState extends State<GamePage> {
         // 剪刀石頭布問題
         final rpsOptions = ["剪刀", "石頭", "布"];
         final opponent = rpsOptions[random.nextInt(rpsOptions.length)];
-        if (randomChallenge == 0) {
+        if (randomRace == 0) {
           _question = "贏給 $opponent";
           _correctAnswer = _getWinningMove(opponent);
-        } else if (randomChallenge == 1) {
+        } else if (randomRace == 1) {
           _question = "輸給 $opponent";
           _correctAnswer = _getLosingMove(opponent);
         } else {
